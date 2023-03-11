@@ -11,10 +11,12 @@ export default function App() {
   ]);
   const [cards, setCards] = useState([
     { id: 1, name: 'card1', timeline: 1 },
-    { id: 2, name: 'card2', timeline: 2 },
+    { id: 2, name: 'card2', timeline: 1 },
+    { id: 3, name: 'card3', timeline: 1 }
+
   ]);
 
-  const rearangeArr = (arr, sourceIndex, destIndex) => {
+  const rearrangeArr = (arr, sourceIndex, destIndex) => {
     const arrCopy = [...arr];
     const [removed] = arrCopy.splice(sourceIndex, 1);
     arrCopy.splice(destIndex, 0, removed);
@@ -25,13 +27,13 @@ export default function App() {
   const onDragEnd = (result) => {
     console.log(result);
     
-    // const { source, destination } = result;
+    const { source, destination } = result;
 
-    // if (!destination) {
-    //   return;
-    // }
+    if (!destination) {
+      return;
+    }
 
-    // if (destination.droppableId === 'Timelines') {
+    // if (destination.droppableId === 'timeline') {
     //   // a category was moved
     //   setTimelines(rearangeArr(timelines, source.index, destination.index));
     // } else if (destination.droppableId !== source.droppableId) {
@@ -49,15 +51,16 @@ export default function App() {
     // } else {
     //   // rearange the array if it is in the same category
 
-    //   setCards(rearangeArr(cards, source.index, destination.index));
+      
     // }
+    setCards(rearrangeArr(cards, source.index, destination.index));
   };
 
   return (
     <div className="container py-5">
       <DragDropContext onDragEnd={onDragEnd}>
         <div>
-          <Droppable droppableId="timeline" key={`card-${card.id}`}>
+          <Droppable droppableId="timeline" >
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
                 {cards.map((card, cardIndex) => (
