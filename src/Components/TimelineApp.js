@@ -660,8 +660,8 @@ export default function TimelineApp() {
       >
         <Box
           sx={{
-            width: "80vw",
-            height: "80vh",
+            width: "90vw",
+            height: "90vh",
             bgcolor: "rgba(179, 211, 252)",
 
             display: "flex",
@@ -697,7 +697,7 @@ export default function TimelineApp() {
               Instructions
             </h2>
 
-            <ul style={{ width: "40vw", height: "40vh" }}>
+            <ul style={{ width: "50vw", height: "40vh", margin: "1vh" }}>
               <li>
                 The objective of the game is to arrange the given cards in the
                 correct chronological order.{" "}
@@ -741,12 +741,13 @@ export default function TimelineApp() {
                 backgroundColor: "#002F6C",
                 color: "#fff",
                 borderRadius: "0.5vw",
-                padding: "0.7vw",
+                marginTop: "10vh",
                 fontSize: "1.5vw",
                 fontFamily: "Roboto Mono, monospace",
-                marginBottom: "2vh",
                 width: "13vw",
-                height: "7vh",
+                height: "8vh"
+              
+                
               }}
               onClick={handleIntroModalClose}
             >
@@ -789,10 +790,10 @@ export default function TimelineApp() {
             </h2>
             <div
               style={{
-                width: "8.9vw",
-                height: "20.2vh",
+                width: "11.9vw",
+                height: "28.2vh",
                 justifyContent: "center",
-                margin: "1vw",
+                margin: "0vw",
                 borderRadius: "0.8vw",
                 border: "solid 0.3vw rgba(63, 81, 181)",
                 background: "rgba(255, 255, 255, 0.4)",

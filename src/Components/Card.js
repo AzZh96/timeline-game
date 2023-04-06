@@ -10,15 +10,15 @@ export default function Card({ card, dateShown, idShown = false }) {
   }
   const nameStyle = {
     
-    fontSize: '0.7vw',
+    fontSize: '1vw',
     textAlign: 'center',
     margin: 'auto',
     fontWeight: "bolder",
     color: "#002F6C"
   }
   const cardStyle = {
-    width: '7.8vw',
-    height: '18vh',
+    width: '10.8vw',
+    height: '26vh',
     background: background,
     display: 'flex',
     flexDirection: 'column',
