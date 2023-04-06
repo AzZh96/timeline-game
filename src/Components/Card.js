@@ -10,7 +10,7 @@ export default function Card({ card, dateShown, idShown = false }) {
   }
   const nameStyle = {
     
-    fontSize: '0.68vw',
+    fontSize: '0.7vw',
     textAlign: 'center',
     margin: 'auto',
     fontWeight: "bolder",
