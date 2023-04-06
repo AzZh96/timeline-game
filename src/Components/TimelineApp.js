@@ -1,4 +1,3 @@
-
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Card from "./Card";
 import Score from "./Score";
@@ -589,29 +588,29 @@ export default function TimelineApp() {
     }
   };
   function isSorted(dateArray) {
-  // Check if the array is sorted in ascending order
-  let isAscending = true;
+    // Check if the array is sorted in ascending order
+    let isAscending = true;
 
-  for (let i = 1; i < dateArray.length; i++) {
-    if (dateArray[i] < dateArray[i - 1]) {
-      isAscending = false;
-      break;
+    for (let i = 1; i < dateArray.length; i++) {
+      if (dateArray[i] < dateArray[i - 1]) {
+        isAscending = false;
+        break;
+      }
     }
+    return isAscending;
   }
-  return isAscending;
-}
 
   const [introModalOpen, setIntroModalOpen] = useState(true); // state for modal open/close
-// handle modal close
-const handleIntroModalClose = () => {
-  setIntroModalOpen(false);
-};
-  const grid = 8;
+  // handle modal close
+  const handleIntroModalClose = () => {
+    setIntroModalOpen(false);
+  };
+  const grid = 0.2;
 
   const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: "none",
-    margin: `0 ${grid}px 0 0`,
+    margin: `0 ${grid}vw 0 0`,
     borderRadius: 8,
 
     // change background colour if dragging
@@ -628,12 +627,12 @@ const handleIntroModalClose = () => {
       ? "rgba(212, 172, 13, 0.5)"
       : "rgba(255, 255, 255, 0.1)",
     display: "flex",
-    border: "solid 4px rgba(63, 81, 181)",
+    border: "solid 0.3vw rgba(63, 81, 181)",
     padding: grid,
     overflow: "auto",
-    borderRadius: 8,
-    marginLeft: 20,
-    marginRight: 20,
+    borderRadius: "0.3vw",
+    marginLeft: "0.5vw",
+    marginRight: "0.5vw",
   });
   const resetGame = () => {
     setScore(0);
@@ -641,15 +640,14 @@ const handleIntroModalClose = () => {
     setTimelineCards([getRandomCard(cards)]);
     setNextCard(getRandomCard(cards));
     setIntroModalOpen(false);
-
-  }
+  };
 
   return (
     <div
-      className="container py-5"
       style={{
         background: "rgba(179, 211, 252)",
-      }}>
+      }}
+    >
       <Modal
         open={introModalOpen}
         onClose={handleIntroModalClose}
@@ -657,74 +655,103 @@ const handleIntroModalClose = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "rgba(179, 211, 252)"
-        }}>
-         <Box
-    sx={{
-      width: "70vw",
-      height: "70vh",
-      bgcolor: "rgba(179, 211, 252)",
-      p: 4,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      
-      borderRadius: 8,
-      boxShadow: 24,
-      outline: 'none'
-        }}>
+          background: "rgba(179, 211, 252)",
+        }}
+      >
+        <Box
+          sx={{
+            width: "80vw",
+            height: "80vh",
+            bgcolor: "rgba(179, 211, 252)",
+
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+
+            borderRadius: "4vw",
+            boxShadow: "24",
+            outline: "none",
+          }}
+        >
           <h1
             style={{
               textAlign: "center",
               color: "#002F6C",
-              fontSize: "3rem",
-              margin: "0 0 20px",
+              fontSize: "3vw",
               fontFamily: "Roboto Mono, monospace",
-            }}>
+            }}
+          >
             Welcome to Digital Dynasties
           </h1>
           <div>
-            <h2 style={{
-              textAlign: "center",
-              color: "#002F6C",
-              fontSize: "2rem",
-              textDecoration: "underline",
-              fontFamily: "Roboto Mono, monospace",
-            }}>
+            <h2
+              style={{
+                textAlign: "center",
+                color: "#002F6C",
+                fontSize: "2vw",
+                textDecoration: "underline",
+                fontFamily: "Roboto Mono, monospace",
+                marginTop: "0.5vh",
+              }}
+            >
               Instructions
-            </h2>    
-          <div styles={{
-          }}>
-          <ul style={{ textAlign: "Left", margin: "0 0 10px 0", width: 550 }}>
-          <li>The objective of the game is to arrange the given cards in the
-            correct chronological order. </li>
-            <li>Upon starting, you will see one card without the date outside of the timeline and one card on the timeline, with its date shown. </li>
-            <li>Drag the card to the left or right of the timeline card to decide whether the event happened before or after it. </li>
-            <li>If you think the card event happened before the pre-placed card on the timeline, place it to the left. </li>
-            <li>If you think it the card event happened later, place it to the right. </li>
-            <li>The more cards placed on the timeline, the more difficult it is to place the next card correctly. </li>
-            <li>If you place a Card correctly, it will highlight <span style={{color: "darkgreen"}}>green</span>, if incorrectly, it will highlight <span style={{color: "red"}}>red.</span></li>
-            <li>Each correct placement earns you 100 points! </li>
-            <li>Each incorrect placement costs you 1 life.</li>
-            <li>You have three lives, use them wisely!</li>
-          </ul>
+            </h2>
+
+            <ul style={{ width: "40vw", height: "40vh" }}>
+              <li>
+                The objective of the game is to arrange the given cards in the
+                correct chronological order.{" "}
+              </li>
+              <li>
+                Upon starting, you will see one card without the date outside of
+                the timeline and one card on the timeline, with its date shown.{" "}
+              </li>
+              <li>
+                Drag the card to the left or right of the timeline card to
+                decide whether the event happened before or after it.{" "}
+              </li>
+              <li>
+                If you think the card event happened before the pre-placed card
+                on the timeline, place it to the left.{" "}
+              </li>
+              <li>
+                If you think it the card event happened later, place it to the
+                right.{" "}
+              </li>
+              <li>
+                The more cards placed on the timeline, the more difficult it is
+                to place the next card correctly.{" "}
+              </li>
+              <li>
+                If you place a Card correctly, it will highlight{" "}
+                <span style={{ color: "darkgreen" }}>green</span>, if
+                incorrectly, it will highlight{" "}
+                <span style={{ color: "red" }}>red.</span>
+              </li>
+              <li>Each correct placement earns you 100 points! </li>
+              <li>Each incorrect placement costs you 1 life.</li>
+              <li>You have three lives, use them wisely!</li>
+            </ul>
           </div>
-          </div>
+
           <div>
-          <button
-            style={{
-              backgroundColor: "#002F6C",
-              color: "#fff",
-              borderRadius: 4,
-              padding: "8px 16px",
-              fontSize: 16,
-              fontFamily: "Roboto Mono, monospace",
-              marginBottom: 20,
-            }}
-            onClick={handleIntroModalClose}
-          >
-            Start Game
-          </button>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#002F6C",
+                color: "#fff",
+                borderRadius: "0.5vw",
+                padding: "0.7vw",
+                fontSize: "1.5vw",
+                fontFamily: "Roboto Mono, monospace",
+                marginBottom: "2vh",
+                width: "13vw",
+                height: "7vh",
+              }}
+              onClick={handleIntroModalClose}
+            >
+              Start Game
+            </Button>
           </div>
         </Box>
       </Modal>
@@ -732,8 +759,8 @@ const handleIntroModalClose = () => {
         style={{
           textAlign: "center",
           color: "#002F6C",
-          fontSize: "3rem",
-          margin: "0 0 20px",
+          fontSize: "3vw",
+          margin: "0 0 2vh",
           fontFamily: "Roboto Mono, monospace",
           textDecoration: "underline",
         }}
@@ -745,27 +772,29 @@ const handleIntroModalClose = () => {
         <div style={{ display: "flex" }}>
           <div
             style={{
-              marginLeft: 450,
+              marginLeft: "19.5vw",
             }}
           >
             <h2
               id="parent-modal-title"
               style={{
-                marginBottom: 16,
+                marginBottom: "1.6vh",
                 fontFamily: "Roboto Mono, monospace",
                 color: "#002F6C",
                 fontWeight: "bolder",
+                fontSize: "1.3vw",
               }}
             >
               Drag this Card <br></br>onto the Timeline!
             </h2>
             <div
               style={{
-                width: 170,
+                width: "8.9vw",
+                height: "20.2vh",
                 justifyContent: "center",
-                margin: 10,
-                borderRadius: "8px",
-                border: "solid 5px rgba(63, 81, 181)",
+                margin: "1vw",
+                borderRadius: "0.8vw",
+                border: "solid 0.3vw rgba(63, 81, 181)",
                 background: "rgba(255, 255, 255, 0.4)",
               }}
             >
@@ -812,8 +841,8 @@ const handleIntroModalClose = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                marginTop: "100px",
-                marginRight: "0px",
+                marginTop: "10vh",
+                marginRight: "0",
               }}
             >
               <Score score={score} />
@@ -821,35 +850,54 @@ const handleIntroModalClose = () => {
             </div>
           </div>
         </div>
-        <h2 id="parent-modal-title"
+        <h2
           style={{
-            margin: 10,
-            marginLeft: 20,
+            margin: "0.5vw",
+            marginLeft: "0.5vw",
             fontFamily: "Roboto Mono, monospace",
             color: "#002F6C",
             fontWeight: "bold",
-          }}>Timeline:</h2>
+            fontSize: "1.3vw",
+          }}
+        >
+          Timeline:
+        </h2>
         <Droppable droppableId="timeline" direction="horizontal">
           {(provided, snapshot) => (
             <div
               className="timelineList"
               ref={provided.innerRef}
               {...provided.droppableProps}
-              style={getListStyle(snapshot.isDraggingOver)}>
+              style={getListStyle(snapshot.isDraggingOver)}
+            >
               {timelineCards.map((card, index) => (
-                <Draggable key={card.id} draggableId={`card-${card.id}`} index={index}isDragDisabled={true}>
+                <Draggable
+                  key={card.id}
+                  draggableId={`card-${card.id}`}
+                  index={index}
+                  isDragDisabled={true}
+                >
                   {(provided, snapshot) => (
-                    <div {...provided.dragHandleProps}{...provided.draggableProps}
+                    <div
+                      {...provided.dragHandleProps}
+                      {...provided.draggableProps}
                       ref={provided.innerRef}
                       style={getItemStyle(
                         snapshot.isDragging,
                         provided.draggableProps.style
-                      )}>
-                      <Card key={card.id} card={card} dateShown={true} draggableId={`card-${card.id}`}/>
+                      )}
+                    >
+                      <Card
+                        key={card.id}
+                        card={card}
+                        dateShown={true}
+                        draggableId={`card-${card.id}`}
+                      />
                     </div>
                   )}
                 </Draggable>
-              ))} {provided.placeholder}
+              ))}{" "}
+              {provided.placeholder}
             </div>
           )}
         </Droppable>
@@ -857,26 +905,39 @@ const handleIntroModalClose = () => {
           <>
             <Modal open={true} style={{ position: "fixed", top: "-50%" }}>
               <Box sx={{ ...modalStyle }}>
-                <h2 id="parent-modal-title"
+                <h2
+                  id="parent-modal-title"
                   style={{
-                    marginBottom: 16,
-                    fontSize: 32,
+                    marginTop: "auto",
+                    marginBottom: "1.6vh",
+                    fontSize: "2.4vw",
                     fontWeight: "bold",
                     fontFamily: "Roboto Mono, monospace",
                     color: "#002F6C",
-                  }}>Game Over!!</h2>
-                <Score score={score} style={{ marginBottom: 16 }} />
-                <Button onClick={() => {resetGame()} }
+                  }}
+                >
+                  Game Over!!
+                </h2>
+                <Score score={score} />
+                <Button
+                  onClick={() => {
+                    resetGame();
+                  }}
                   style={{
                     backgroundColor: "#002F6C",
                     color: "#fff",
-                    borderRadius: 4,
-                    padding: "8px 16px",
-                    fontSize: 16,
+                    borderRadius: "0.5vw",
+                    padding: "0.7vw",
+                    fontSize: "1.3vw",
                     fontFamily: "Roboto Mono, monospace",
-                    marginBottom: 20,
-                    
-                  }}> Play Again</Button>
+                    marginBottom: "2vh",
+                    width: "10vw",
+                    height: "7vh",
+                  }}
+                >
+                  
+                  Play Again
+                </Button>
               </Box>
             </Modal>
           </>
@@ -891,16 +952,16 @@ const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  height: 0,
+  width: "40vw",
+  height: "30vh",
   background: "rgba(179, 211, 252)",
-  borderRadius: 8,
-  padding: 16,
+  borderRadius: "0.8vw",
+  padding: "1.6vw",
   textAlign: "center",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  boxShadow: "0 0 20px rgba(63, 81, 181)", // add boxShadow property
+  boxShadow: "0 0 2vw rgba(63, 81, 181)", // add boxShadow property
   outline: "none",
 };

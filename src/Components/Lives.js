@@ -16,8 +16,8 @@ const Lives = ({ lives }) => {
   };
 
   const heartStyle = {
-  fontSize: "25px",
-  marginLeft: "5px",
+  fontSize: "1.5vw",
+  marginLeft: "0.2vw",
   color: "#990033"
   };
   

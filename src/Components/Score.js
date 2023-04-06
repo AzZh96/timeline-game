@@ -11,8 +11,8 @@ return (
 };
 
 const scoreStyle = {
-    fontSize: "30px",
-    marginLeft: "15px",
+    fontSize: "1.5vw",
+    marginLeft: "1.1vw",
     color: "#002F6C",
     fontWeight: "bold"
     

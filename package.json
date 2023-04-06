@@ -1,7 +1,7 @@
 {
   "name": "timeline-game",
   "version": "0.1.0",
-  "homepage": "https://AzZh96.github.io/timeline-game-hosted",
+  "homepage": "https://AzZh96.github.io/timeline-game",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",

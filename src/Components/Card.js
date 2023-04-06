@@ -9,32 +9,32 @@ export default function Card({ card, dateShown, idShown = false }) {
     background = '#FCBBBB'
   }
   const nameStyle = {
-    marginTop: 15,
-    fontSize: '12.5px',
+    
+    fontSize: '0.68vw',
     textAlign: 'center',
     margin: 'auto',
     fontWeight: "bolder",
     color: "#002F6C"
   }
   const cardStyle = {
-    width: '150px',
-    height: '170px',
+    width: '7.8vw',
+    height: '18vh',
     background: background,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center', 
-    padding: '10px',
+    padding: '0.53vw',
     position: 'relative', 
   }
   
   const dateStyle = {
-    fontSize: '16px',
+    fontSize: '0.9vw',
     textAlign: 'center',
     fontWeight: "bolder",
     color: "#002F6C",
     position: "absolute",
-    bottom: "10px",
+    bottom: "1vh",
     width: "100%",
     display: "flex", 
     justifyContent: "center", 
