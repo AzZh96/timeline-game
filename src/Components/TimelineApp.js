@@ -637,8 +637,12 @@ export default function TimelineApp() {
   const resetGame = () => {
     setScore(0);
     setLives(3);
+    const filteredCards = cards.filter(
+      (card) => card.id !== timelineCards[0].id
+    ); // Exclude card in timelineCard
+    const randomCard = getRandomCard(filteredCards);
     setTimelineCards([getRandomCard(cards)]);
-    setNextCard(getRandomCard(cards));
+    setNextCard(randomCard);
     setIntroModalOpen(false);
   };
 
