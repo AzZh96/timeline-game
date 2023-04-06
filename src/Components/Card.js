@@ -8,9 +8,6 @@ export default function Card({ card, dateShown, idShown = false }) {
   } else if (card.placedCorrectly === false) {
     background = '#FCBBBB'
   }
-
- 
-
   const nameStyle = {
     marginTop: 15,
     fontSize: '12.5px',
@@ -26,9 +23,9 @@ export default function Card({ card, dateShown, idShown = false }) {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'center', // Changed from "flex-start"
+    alignItems: 'center', 
     padding: '10px',
-    position: 'relative', // Added to create a stacking context for the absolute positioning of dateStyle
+    position: 'relative', 
   }
   
   const dateStyle = {
@@ -39,12 +36,10 @@ export default function Card({ card, dateShown, idShown = false }) {
     position: "absolute",
     bottom: "10px",
     width: "100%",
-    display: "flex", // Added
-    justifyContent: "center", // Added
+    display: "flex", 
+    justifyContent: "center", 
     
   }
-  
-
   return (
     <div
       style={cardStyle}
