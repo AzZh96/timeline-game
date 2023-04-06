@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/timeline-game/static/css/main.89016930.css",
-    "main.js": "/timeline-game/static/js/main.d2be6ade.js",
+    "main.css": "/timeline-game/static/css/main.80a92f97.css",
+    "main.js": "/timeline-game/static/js/main.fdadb842.js",
     "static/js/787.5e6dea1d.chunk.js": "/timeline-game/static/js/787.5e6dea1d.chunk.js",
     "index.html": "/timeline-game/index.html",
-    "main.89016930.css.map": "/timeline-game/static/css/main.89016930.css.map",
-    "main.d2be6ade.js.map": "/timeline-game/static/js/main.d2be6ade.js.map",
+    "main.80a92f97.css.map": "/timeline-game/static/css/main.80a92f97.css.map",
+    "main.fdadb842.js.map": "/timeline-game/static/js/main.fdadb842.js.map",
     "787.5e6dea1d.chunk.js.map": "/timeline-game/static/js/787.5e6dea1d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.89016930.css",
-    "static/js/main.d2be6ade.js"
+    "static/css/main.80a92f97.css",
+    "static/js/main.fdadb842.js"
   ]
 }
