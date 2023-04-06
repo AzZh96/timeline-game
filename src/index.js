@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './Styles/index.css';
+import TimelineApp from './Components/TimelineApp';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <TimelineApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
