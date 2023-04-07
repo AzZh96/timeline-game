@@ -3,6 +3,8 @@ import Card from "./Card";
 import Score from "./Score";
 import Lives from "./Lives";
 import { Modal, Box, Button } from "@mui/material";
+import InfoIcon from '@mui/icons-material/Info';
+import IconButton from '@mui/material/IconButton';
 import "../Styles/style.css";
 import "../Styles/fonts.css";
 import React, { useState } from "react";
@@ -605,6 +607,9 @@ export default function TimelineApp() {
   const handleIntroModalClose = () => {
     setIntroModalOpen(false);
   };
+  const handleIntroModalOpen = () => {
+    setIntroModalOpen(true);
+  };
   const grid = 0.2;
 
   const getItemStyle = (isDragging, draggableStyle) => ({
@@ -772,7 +777,11 @@ export default function TimelineApp() {
       >
         Digital Dynasties
       </h1>
-
+      <div style={{position: "absolute", left: "64.5%", top: "16%",}}>
+      <IconButton style={{color: "#002F6C", }} onClick={() => handleIntroModalOpen()}>
+            <InfoIcon sx={{ fontSize: "3vw" }} ></InfoIcon>
+            </IconButton>
+          </div>
       <DragDropContext onDragEnd={onDragEnd}>
         <div style={{ display: "flex" }}>
           <div
