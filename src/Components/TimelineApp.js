@@ -531,16 +531,16 @@ export default function TimelineApp() {
     return Math.floor(Math.random() * array.length);
   };
 
-  function getRandomCard(array, excludeId) {
-    const filteredArray = excludeId
-      ? array.filter((card) => card.id !== excludeId)
+  const getRandomCard = (array, excludeIds) => {
+    const filteredArray = excludeIds
+      ? array.filter((card) => !excludeIds.includes(card.id))
       : array;
     const randomIndex = getRandomIndex(filteredArray);
     const randomCard = filteredArray[randomIndex];
     const newArray = array.filter((card) => card.id !== randomCard.id);
     setCards(newArray);
     return randomCard;
-  }
+  };
 
   const [timelineCards, setTimelineCards] = useState(() => {
     const randomCard = getRandomCard(cards);
@@ -603,11 +603,15 @@ export default function TimelineApp() {
   }
 
   const [introModalOpen, setIntroModalOpen] = useState(true); // state for modal open/close
+  const [modalOpenGame, setModalOpenGame] = useState(false);
+
+
   // handle modal close
   const handleIntroModalClose = () => {
     setIntroModalOpen(false);
   };
-  const handleIntroModalOpen = () => {
+  const handleModalOpenGame = () => {
+    setModalOpenGame(true)
     setIntroModalOpen(true);
   };
   const grid = 0.2;
@@ -642,12 +646,10 @@ export default function TimelineApp() {
   const resetGame = () => {
     setScore(0);
     setLives(3);
-    const filteredCards = cards.filter(
-      (card) => card.id !== timelineCards[0].id
-    ); // Exclude card in timelineCard
-    const randomCard = getRandomCard(filteredCards);
-    setTimelineCards([getRandomCard(cards)]);
-    setNextCard(randomCard);
+    const randomTimelineCard = getRandomCard(cards);
+    const randomNextCard = getRandomCard(cards, [randomTimelineCard.id]);
+    setTimelineCards([randomTimelineCard]);
+    setNextCard(randomNextCard);
     setIntroModalOpen(false);
   };
 
@@ -672,11 +674,9 @@ export default function TimelineApp() {
             width: "90vw",
             height: "90vh",
             bgcolor: "rgba(179, 211, 252)",
-
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-
             borderRadius: "4vw",
             boxShadow: "24",
             outline: "none",
@@ -744,7 +744,7 @@ export default function TimelineApp() {
           </div>
 
           <div>
-            <Button
+          <Button
               variant="contained"
               style={{
                 backgroundColor: "#002F6C",
@@ -760,7 +760,14 @@ export default function TimelineApp() {
               }}
               onClick={handleIntroModalClose}
             >
-              Start Game
+          {modalOpenGame === false ? (
+            
+            <p>Start Game</p> 
+            
+            ):(
+              <p>Resume Game</p> 
+
+            )}
             </Button>
           </div>
         </Box>
@@ -777,11 +784,7 @@ export default function TimelineApp() {
       >
         Digital Dynasties
       </h1>
-      <div style={{position: "absolute", left: "64.5%", top: "16%",}}>
-      <IconButton style={{color: "#002F6C", }} onClick={() => handleIntroModalOpen()}>
-            <InfoIcon sx={{ fontSize: "3vw" }} ></InfoIcon>
-            </IconButton>
-          </div>
+      
       <DragDropContext onDragEnd={onDragEnd}>
         <div style={{ display: "flex" }}>
           <div
@@ -855,12 +858,36 @@ export default function TimelineApp() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                marginTop: "10vh",
+                marginTop: "3vh",
                 marginRight: "0",
               }}
             >
+              <div style={{}}>
+      <IconButton style={{color: "#002F6C", }} onClick={() => handleModalOpenGame()}>
+            <InfoIcon sx={{ fontSize: "3vw" }} ></InfoIcon>
+            </IconButton>
+          </div>
               <Score score={score} />
               <Lives lives={lives} />
+              <Button
+                  onClick={() => {
+                    resetGame();
+                  }}
+                  style={{
+                    backgroundColor: "#002F6C",
+                    color: "#fff",
+                    borderRadius: "0.5vw",
+                    padding: "0.7vw",
+                    fontSize: "1.3vw",
+                    fontFamily: "Roboto Mono, monospace",
+                    marginBottom: "2vh",
+                    width: "10vw",
+                    height: "7vh",
+                  }}
+                >
+                  
+                  Play Again
+                </Button>
             </div>
           </div>
         </div>
