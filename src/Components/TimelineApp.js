@@ -862,7 +862,7 @@ export default function TimelineApp() {
                 marginRight: "0",
               }}
             >
-              <div style={{}}>
+              <div style={{marginBottom: "0.5vh"}}>
       <IconButton style={{color: "#002F6C", }} onClick={() => handleModalOpenGame()}>
             <InfoIcon sx={{ fontSize: "3vw" }} ></InfoIcon>
             </IconButton>
@@ -881,12 +881,12 @@ export default function TimelineApp() {
                     fontSize: "1.3vw",
                     fontFamily: "Roboto Mono, monospace",
                     marginBottom: "2vh",
-                    width: "10vw",
-                    height: "7vh",
+                    width: "11.8vw",
+  height: "7vh"
                   }}
                 >
                   
-                  Play Again
+                  Restart
                 </Button>
             </div>
           </div>
