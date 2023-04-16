@@ -10,6 +10,7 @@ import "../Styles/fonts.css";
 import React, { useState, useEffect } from "react";
 export default function TimelineApp({
   onRefresh,
+  onIntroModalOpen,
   onIntroModalClosed,
   introModalOpen,
 }) {
@@ -620,7 +621,8 @@ export default function TimelineApp({
   };
   const handleModalOpenGame = () => {
     setModalOpenGame(true);
-    onIntroModalClosed();
+    
+    onIntroModalOpen();
   };
   const grid = 0.2;
 
