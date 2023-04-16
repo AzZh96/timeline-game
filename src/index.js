@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Styles/index.css';
-import TimelineApp from './Components/TimelineApp';
 import reportWebVitals from './reportWebVitals';
+import GameParent from './Components/GameParent';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TimelineApp />
+    <GameParent />
   </React.StrictMode>,
   document.getElementById('root')
 );

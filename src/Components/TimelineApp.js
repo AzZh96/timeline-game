@@ -3,12 +3,16 @@ import Card from "./Card";
 import Score from "./Score";
 import Lives from "./Lives";
 import { Modal, Box, Button } from "@mui/material";
-import InfoIcon from '@mui/icons-material/Info';
-import IconButton from '@mui/material/IconButton';
+import InfoIcon from "@mui/icons-material/Info";
+import IconButton from "@mui/material/IconButton";
 import "../Styles/style.css";
 import "../Styles/fonts.css";
-import React, { useState } from "react";
-export default function TimelineApp() {
+import React, { useState, useEffect } from "react";
+export default function TimelineApp({
+  onRefresh,
+  onIntroModalClosed,
+  introModalOpen,
+}) {
   const [cards, setCards] = useState([
     {
       id: 1,
@@ -142,9 +146,10 @@ export default function TimelineApp() {
     },
     {
       id: 27,
-      name: "The first iPad is introduced.",
-      date: new Date("2012"),
+      name: "Andrew Wiles proves Fermat's Last Theorem, a problem that had remained unsolved for over 350 years",
+      date: new Date("1994"),
     },
+
     {
       id: 28,
       name: "The first Apple Watch is introduced.",
@@ -162,9 +167,10 @@ export default function TimelineApp() {
     },
     {
       id: 31,
-      name: "Babbage designs the Analytical Engine, which is considered to be the first computer with a stored program.",
-      date: new Date("1833"),
+      name: "Yitang Zhang proves that there are infinitely many pairs of prime numbers that differ by at most 70 million, a major breakthrough in number theory",
+      date: new Date("2012"),
     },
+
     {
       id: 32,
       name: "The first electronic computer, the Colossus Mark I, is completed in England.",
@@ -356,17 +362,18 @@ export default function TimelineApp() {
       name: "Robert Langlands formulates the Langlands program, a far-reaching set of conjectures that connects number theory and representation theory",
       date: new Date("1978"),
     },
+    /*
     {
       id: 70,
-      name: "Andrew Wiles proves Fermat's Last Theorem, a problem that had remained unsolved for over 350 years",
-      date: new Date("1994"),
+      name: "",
+      date: new Date(""),
     },
     {
       id: 71,
-      name: "Yitang Zhang proves that there are infinitely many pairs of prime numbers that differ by at most 70 million, a major breakthrough in number theory",
-      date: new Date("2012"),
+      name: "",
+      date: new Date(""),
     },
-    /*
+    
 {
   id: 72,
   name: "",
@@ -516,16 +523,8 @@ export default function TimelineApp() {
     
     */
   ]);
-  function compare(a, b) {
-    if (a.date <= b.date) {
-      return -1;
-    }
-    if (a.date >= b.date) {
-      return 1;
-    }
-  }
 
-  console.log(cards.sort(compare));
+  console.log(cards);
 
   const getRandomIndex = (array) => {
     return Math.floor(Math.random() * array.length);
@@ -535,6 +534,10 @@ export default function TimelineApp() {
     const filteredArray = excludeIds
       ? array.filter((card) => !excludeIds.includes(card.id))
       : array;
+    if (filteredArray.length === 0) {
+      setLives(0);
+      return null;
+    }
     const randomIndex = getRandomIndex(filteredArray);
     const randomCard = filteredArray[randomIndex];
     const newArray = array.filter((card) => card.id !== randomCard.id);
@@ -568,7 +571,12 @@ export default function TimelineApp() {
       destination.droppableId === "timeline" &&
       source.droppableId === "nextCard"
     ) {
-      setNextCard(getRandomCard(cards));
+      const newNextCard = getRandomCard(cards);
+      if (newNextCard === null) {
+        // No more cards left in the deck
+        return;
+      }
+      setNextCard(newNextCard);
       const newTimelineCards = [...timelineCards];
       newTimelineCards.splice(destination.index, 0, nextCard);
       const timelineDates = newTimelineCards.map((card) => card.date);
@@ -589,6 +597,7 @@ export default function TimelineApp() {
       setTimelineCards(newTimelineCards);
     }
   };
+
   function isSorted(dateArray) {
     // Check if the array is sorted in ascending order
     let isAscending = true;
@@ -602,17 +611,16 @@ export default function TimelineApp() {
     return isAscending;
   }
 
-  const [introModalOpen, setIntroModalOpen] = useState(true); // state for modal open/close
+  // state for modal open/close
   const [modalOpenGame, setModalOpenGame] = useState(false);
-
 
   // handle modal close
   const handleIntroModalClose = () => {
-    setIntroModalOpen(false);
+    onIntroModalClosed();
   };
   const handleModalOpenGame = () => {
-    setModalOpenGame(true)
-    setIntroModalOpen(true);
+    setModalOpenGame(true);
+    onIntroModalClosed();
   };
   const grid = 0.2;
 
@@ -630,6 +638,11 @@ export default function TimelineApp() {
     // styles we need to apply on draggables
     ...draggableStyle,
   });
+  useEffect(() => {
+    if (cards.length === 1) {
+      setModalOpenGame(true);
+    }
+  }, [cards]);
 
   const getListStyle = (isDraggingOver) => ({
     background: isDraggingOver
@@ -643,15 +656,6 @@ export default function TimelineApp() {
     marginLeft: "0.5vw",
     marginRight: "0.5vw",
   });
-  const resetGame = () => {
-    setScore(0);
-    setLives(3);
-    const randomTimelineCard = getRandomCard(cards);
-    const randomNextCard = getRandomCard(cards, [randomTimelineCard.id]);
-    setTimelineCards([randomTimelineCard]);
-    setNextCard(randomNextCard);
-    setIntroModalOpen(false);
-  };
 
   return (
     <div
@@ -744,7 +748,7 @@ export default function TimelineApp() {
           </div>
 
           <div>
-          <Button
+            <Button
               variant="contained"
               style={{
                 backgroundColor: "#002F6C",
@@ -754,20 +758,11 @@ export default function TimelineApp() {
                 fontSize: "1.5vw",
                 fontFamily: "Roboto Mono, monospace",
                 width: "13vw",
-                height: "8vh"
-              
-                
+                height: "8vh",
               }}
               onClick={handleIntroModalClose}
             >
-          {modalOpenGame === false ? (
-            
-            <p>Start Game</p> 
-            
-            ):(
-              <p>Resume Game</p> 
-
-            )}
+              {modalOpenGame === false ? <p>Start Game</p> : <p>Resume Game</p>}
             </Button>
           </div>
         </Box>
@@ -784,7 +779,7 @@ export default function TimelineApp() {
       >
         Digital Dynasties
       </h1>
-      
+
       <DragDropContext onDragEnd={onDragEnd}>
         <div style={{ display: "flex" }}>
           <div
@@ -862,32 +857,34 @@ export default function TimelineApp() {
                 marginRight: "0",
               }}
             >
-              <div style={{marginBottom: "0.5vh"}}>
-      <IconButton style={{color: "#002F6C", }} onClick={() => handleModalOpenGame()}>
-            <InfoIcon sx={{ fontSize: "3vw" }} ></InfoIcon>
-            </IconButton>
-          </div>
+              <div style={{ marginBottom: "0.5vh" }}>
+                <IconButton
+                  style={{ color: "#002F6C" }}
+                  onClick={() => handleModalOpenGame()}
+                >
+                  <InfoIcon sx={{ fontSize: "3vw" }}></InfoIcon>
+                </IconButton>
+              </div>
               <Score score={score} />
               <Lives lives={lives} />
               <Button
-                  onClick={() => {
-                    resetGame();
-                  }}
-                  style={{
-                    backgroundColor: "#002F6C",
-                    color: "#fff",
-                    borderRadius: "0.5vw",
-                    padding: "0.7vw",
-                    fontSize: "1.3vw",
-                    fontFamily: "Roboto Mono, monospace",
-                    marginBottom: "2vh",
-                    width: "11.8vw",
-  height: "7vh"
-                  }}
-                >
-                  
-                  Restart
-                </Button>
+                onClick={() => {
+                  onRefresh();
+                }}
+                style={{
+                  backgroundColor: "#002F6C",
+                  color: "#fff",
+                  borderRadius: "0.5vw",
+                  padding: "0.7vw",
+                  fontSize: "1.3vw",
+                  fontFamily: "Roboto Mono, monospace",
+                  marginBottom: "2vh",
+                  width: "11.8vw",
+                  height: "7.5vh",
+                }}
+              >
+                Restart
+              </Button>
             </div>
           </div>
         </div>
@@ -962,7 +959,7 @@ export default function TimelineApp() {
                 <Score score={score} />
                 <Button
                   onClick={() => {
-                    resetGame();
+                    onRefresh();
                   }}
                   style={{
                     backgroundColor: "#002F6C",
@@ -976,7 +973,6 @@ export default function TimelineApp() {
                     height: "7vh",
                   }}
                 >
-                  
                   Play Again
                 </Button>
               </Box>

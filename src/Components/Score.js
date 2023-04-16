@@ -17,4 +17,5 @@ const scoreStyle = {
     fontWeight: "bold"
     
     };
+        
 export default Score;
