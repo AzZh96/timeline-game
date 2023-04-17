@@ -525,7 +525,7 @@ export default function TimelineApp({
     */
   ]);
 
-  console.log(cards);
+
 
   const getRandomIndex = (array) => {
     return Math.floor(Math.random() * array.length);
