@@ -730,7 +730,7 @@ export default function TimelineApp({
                 on the timeline, place it to the left.{" "}
               </li>
               <li>
-                If you think it the card event happened later, place it to the
+                If you think the card event happened later, place it to the
                 right.{" "}
               </li>
               <li>
