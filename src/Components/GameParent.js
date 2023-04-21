@@ -8,7 +8,10 @@ export default function GameParent() {
     const [introModalOpen, setIntroModalOpen] = useState(true);
 
     return (
-        <TimelineApp key={refreshCount} onIntroModalOpen={() => setIntroModalOpen(true)} onIntroModalClosed={() => setIntroModalOpen(false)} introModalOpen={introModalOpen} onRefresh={() => setRefreshCount(refreshCount +1)}></TimelineApp>
+        <TimelineApp key={refreshCount} onIntroModalOpen={() => setIntroModalOpen(true)}            
+        onIntroModalClosed={() => setIntroModalOpen(false)} 
+        introModalOpen={introModalOpen} 
+        onRefresh={() => setRefreshCount(refreshCount +1)}></TimelineApp>
     )
 
 

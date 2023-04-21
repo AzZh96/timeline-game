@@ -574,7 +574,7 @@ export default function TimelineApp({
     ) {
       const newNextCard = getRandomCard(cards);
       if (newNextCard === null) {
-        // No more cards left in the deck
+       setLives(0);
         return;
       }
       setNextCard(newNextCard);
@@ -598,7 +598,6 @@ export default function TimelineApp({
       setTimelineCards(newTimelineCards);
     }
   };
-
   function isSorted(dateArray) {
     // Check if the array is sorted in ascending order
     let isAscending = true;
