@@ -14,6 +14,7 @@ export default function TimelineApp({
   onIntroModalClosed,
   introModalOpen,
 }) {
+  //array of all cards in game
   const [cards, setCards] = useState([
     {
       id: 1,
@@ -525,12 +526,12 @@ export default function TimelineApp({
     */
   ]);
 
-
-
+  // This function returns a random index of an array
   const getRandomIndex = (array) => {
     return Math.floor(Math.random() * array.length);
   };
 
+  // This function returns a random card from an array, excluding the cards with specific IDs
   const getRandomCard = (array, excludeIds) => {
     const filteredArray = excludeIds
       ? array.filter((card) => !excludeIds.includes(card.id))
@@ -546,11 +547,13 @@ export default function TimelineApp({
     return randomCard;
   };
 
+  // This state variable contains an array of cards in the timeline
   const [timelineCards, setTimelineCards] = useState(() => {
     const randomCard = getRandomCard(cards);
     return [randomCard];
   });
 
+  // This state variable contains the next card to be placed on the timeline
   const [nextCard, setNextCard] = useState(() => {
     const filteredCards = cards.filter(
       (card) => card.id !== timelineCards[0].id
@@ -559,9 +562,13 @@ export default function TimelineApp({
     return randomCard;
   });
 
+  // This state variable contains the score of the game
   const [score, setScore] = useState(0);
+
+  // This state variable contains the number of lives remaining in the game
   const [lives, setLives] = useState(3);
 
+  // This function handles the end of a card drag and drop event
   const onDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination) {
@@ -574,7 +581,7 @@ export default function TimelineApp({
     ) {
       const newNextCard = getRandomCard(cards);
       if (newNextCard === null) {
-       setLives(0);
+        setLives(0);
         return;
       }
       setNextCard(newNextCard);
@@ -598,8 +605,9 @@ export default function TimelineApp({
       setTimelineCards(newTimelineCards);
     }
   };
+
+  // This function checks if an array of dates is sorted in ascending order
   function isSorted(dateArray) {
-    // Check if the array is sorted in ascending order
     let isAscending = true;
 
     for (let i = 1; i < dateArray.length; i++) {
@@ -610,7 +618,6 @@ export default function TimelineApp({
     }
     return isAscending;
   }
-
   // state for modal open/close
   const [modalOpenGame, setModalOpenGame] = useState(false);
 
@@ -620,7 +627,7 @@ export default function TimelineApp({
   };
   const handleModalOpenGame = () => {
     setModalOpenGame(true);
-    
+
     onIntroModalOpen();
   };
   const grid = 0.2;
@@ -985,6 +992,7 @@ export default function TimelineApp({
   );
 }
 
+//styles for popup modal
 const modalStyle = {
   position: "absolute",
   top: "50%",
