@@ -364,166 +364,163 @@ export default function TimelineApp({
       name: "Robert Langlands formulates the Langlands program, a far-reaching set of conjectures that connects number theory and representation theory",
       date: new Date("1978"),
     },
-    /*
+
     {
       id: 70,
-      name: "",
-      date: new Date(""),
+      name: "Muhammad Al-Karajis first use of proof by mathematical induction, including to prove the binomial theorem",
+      date: new Date("953"),
     },
     {
       id: 71,
-      name: "",
-      date: new Date(""),
+      name: "First printed edition of Euclid’s Elements",
+      date: new Date("1482"),
     },
-    
-{
-  id: 72,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 73,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 74,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 75,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 76,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 77,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 78,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 79,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 80,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 81,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 82,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 83,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 84,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 85,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 86,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 87,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 88,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 89,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 90,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 91,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 92,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 93,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 94,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 95,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 96,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 97,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 98,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 99,
-  name: "",
-  date: new Date(""),
-},
-{
-  id: 100,
-  name: "",
-  date: new Date(""),
-}
 
-    
-    */
+    {
+      id: 72,
+      name: "Cardano conceives the idea of complex numbers.",
+      date: new Date("1545"),
+    },
+    {
+      id: 73,
+      name: "Napier publishes the first references to the number e, in a book on logarithms.",
+      date: new Date("1618"),
+    },
+    {
+      id: 74,
+      name: "Fermat claims to have proven Fermat’s Last Theorem.",
+      date: new Date("1637"),
+    },
+    {
+      id: 75,
+      name: "Pascal and Fermat develop the theory of probability.",
+      date: new Date("1654"),
+    },
+    {
+      id: 76,
+      name: "Leibniz’ publishes the first paper on the calculus.",
+      date: new Date("1684"),
+    },
+    {
+      id: 77,
+      name: "Newton publishes the Principia Mathematica, containing the laws of gravity and motion, as well as his version of calculus.",
+      date: new Date("1687"),
+    },
+    {
+      id: 78,
+      name: "Bolyai, Gauss and Lobachevsky all invent hyperbolic non-Euclidean geometry.",
+      date: new Date("1829"),
+    },
+    {
+      id: 79,
+      name: "Lambert proves that π is irrational",
+      date: new Date("1761"),
+    },
+    {
+      id: 80,
+      name: "Gauss proves the fundamental theorem of algebra.",
+      date: new Date("1799"),
+    },
+    {
+      id: 81,
+      name: "Galois finds a general condition for solving algebraic equations, thereby founding Group theory and Galois theory.",
+      date: new Date("1832"),
+    },
+    {
+      id: 82,
+      name: "August Ferdinand Möbius invents the Möbius strip.",
+      date: new Date("1858"),
+    },
+    {
+      id: 83,
+      name: "Cantor proves that there are different “sizes” of infinity, and that the real numbers are uncountable.",
+      date: new Date("1874"),
+    },
+    {
+      id: 84,
+      name: "Poincarés paper “Analysis Situs” starts modern topology.",
+      date: new Date("1895"),
+    },
+    {
+      id: 85,
+      name: "Einstein explains the photoelectric effect and Brownian motion, discovers special relativity, and E = mc².",
+      date: new Date("1905"),
+    },
+    {
+      id: 86,
+      name: "Noether shows that every conservation law in physics corresponds to a symmetry of the universe.",
+      date: new Date("1915"),
+    },
+    {
+      id: 87,
+      name: "Fibonacci’s Liber Abaci introduces Arabic numerals to Europe, as well as simple algebra and the Fibonacci numbers.",
+      date: new Date("1202"),
+    },
+    {
+      id: 88,
+      name: "A group of French mathematicians publish their first book under the pseudonym of Nicolas Bourbaki, on Set theory.",
+      date: new Date("1939"),
+    },
+    {
+      id: 89,
+      name: "Lorenz discovers chaotic behaviour in weather simulations, the butterfly effect.",
+      date: new Date("1961"),
+    },
+    {
+      id: 90,
+      name: "Appel and Haken prove the Four Colour Conjecture using a computer.",
+      date: new Date("1976"),
+    },
+    {
+      id: 91,
+      name: "Adelman, Rivest and Shamir introduce public-key cryptography using prime numbers.",
+      date: new Date("1977"),
+    },
+    {
+      id: 92,
+      name: "The Clay Mathematics Institute published the seven Millenium Prize Problems.",
+      date: new Date("2000"),
+    },
+    {
+      id: 93,
+      name: "Perelman proves the Poincaré conjecture, the only one of the seven Millennium problems that have been solved to date.",
+      date: new Date("2003"),
+    },
+    {
+      id: 94,
+      name: "Al-Khwarizmi publishes “Kitab al-jabr wa al-muqābalah”, the first book about, and the namesake of Algebra.",
+      date: new Date("830"),
+    },
+    {
+      id: 95,
+      name: "Aldus announces its PageMaker program for use on Macintosh computers, launching the desktop publishing revolution.",
+      date: new Date("1985"),
+    },
+    {
+      id: 96,
+      name: "Creation of ASCII — American Standard Code for Information Interchange",
+      date: new Date("1963"),
+    },
+    {
+      id: 97,
+      name: "The Pascal programming language, named after Blaise Pascal, a French physicist, mathematician and inventor turned philosopher, is introduced by Professor Niklaus Wirth",
+      date: new Date("1970"),
+    },
+    {
+      id: 98,
+      name: "The C programming language is released.",
+      date: new Date("1972"),
+    },
+    {
+      id: 99,
+      name: "Microsoft announces Word, originally called Multi-Tool Word.",
+      date: new Date("1983"),
+    },
+    {
+      id: 100,
+      name: "The C++ Programming Language is published",
+      date: new Date("1985"),
+    },
   ]);
 
   // This function returns a random index of an array
